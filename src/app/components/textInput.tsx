@@ -1,89 +1,52 @@
+"use client";
+
+import type { TextTone } from "@/app/types/textTone";
+import Image from "next/image";
 import type React from "react";
+import { useState } from "react";
 
 const toneOptions = [
 	{
 		id: "professional",
 		label: "Professional",
-		description: "For formal and technical writing",
-		icon: (
-			<svg
-				width="15"
-				height="14"
-				viewBox="0 0 15 14"
-				fill="none"
-				xmlns="http://www.w3.org/2000/svg"
-			>
-				<path
-					d="M14.9231 13.72C14.8724 13.8052 14.7996 13.8759 14.7118 13.925C14.6241 13.9742 14.5246 14 14.4233 14H0.576363C0.475137 13.9999 0.375719 13.974 0.288093 13.9248C0.200467 13.8756 0.127718 13.8049 0.0771494 13.7198C0.0265811 13.6347 -2.59689e-05 13.5382 1.90191e-08 13.4399C2.60069e-05 13.3417 0.0266841 13.2452 0.0772974 13.1601C1.17567 11.3173 2.86832 9.99584 4.84366 9.36943C3.86657 8.80493 3.10742 7.94476 2.68282 6.92102C2.25821 5.89728 2.19161 4.76658 2.49325 3.70255C2.79489 2.63852 3.4481 1.70001 4.35255 1.03113C5.257 0.362254 6.36269 0 7.49982 0C8.63695 0 9.74264 0.362254 10.6471 1.03113C11.5515 1.70001 12.2047 2.63852 12.5064 3.70255C12.808 4.76658 12.7414 5.89728 12.3168 6.92102C11.8922 7.94476 11.1331 8.80493 10.156 9.36943C12.1313 9.99584 13.824 11.3173 14.9223 13.1601C14.9731 13.2452 14.9999 13.3417 15 13.44C15.0001 13.5383 14.9736 13.6349 14.9231 13.72Z"
-					fill="#101828"
-					fill-opacity="0.58"
-				/>
-			</svg>
-		),
+		description: "Formal and business-appropriate language",
+		icon: "briefcase",
 	},
 	{
 		id: "casual",
 		label: "Casual",
-		description: "For informal and friendly writing",
-		icon: (
-			<svg
-				width="15"
-				height="14"
-				viewBox="0 0 15 14"
-				fill="none"
-				xmlns="http://www.w3.org/2000/svg"
-			>
-				<path
-					d="M14.9231 13.72C14.8724 13.8052 14.7996 13.8759 14.7118 13.925C14.6241 13.9742 14.5246 14 14.4233 14H0.576363C0.475137 13.9999 0.375719 13.974 0.288093 13.9248C0.200467 13.8756 0.127718 13.8049 0.0771494 13.7198C0.0265811 13.6347 -2.59689e-05 13.5382 1.90191e-08 13.4399C2.60069e-05 13.3417 0.0266841 13.2452 0.0772974 13.1601C1.17567 11.3173 2.86832 9.99584 4.84366 9.36943C3.86657 8.80493 3.10742 7.94476 2.68282 6.92102C2.25821 5.89728 2.19161 4.76658 2.49325 3.70255C2.79489 2.63852 3.4481 1.70001 4.35255 1.03113C5.257 0.362254 6.36269 0 7.49982 0C8.63695 0 9.74264 0.362254 10.6471 1.03113C11.5515 1.70001 12.2047 2.63852 12.5064 3.70255C12.808 4.76658 12.7414 5.89728 12.3168 6.92102C11.8922 7.94476 11.1331 8.80493 10.156 9.36943C12.1313 9.99584 13.824 11.3173 14.9223 13.1601C14.9731 13.2452 14.9999 13.3417 15 13.44C15.0001 13.5383 14.9736 13.6349 14.9231 13.72Z"
-					fill="#101828"
-					fill-opacity="0.58"
-				/>
-			</svg>
-		),
+		description: "Relaxed, everyday language",
+		icon: "coffee",
 	},
 	{
 		id: "friendly",
 		label: "Friendly",
-		description: "For warm and approachable writing",
-		icon: (
-			<svg
-				width="15"
-				height="14"
-				viewBox="0 0 15 14"
-				fill="none"
-				xmlns="http://www.w3.org/2000/svg"
-			>
-				<path
-					d="M14.9231 13.72C14.8724 13.8052 14.7996 13.8759 14.7118 13.925C14.6241 13.9742 14.5246 14 14.4233 14H0.576363C0.475137 13.9999 0.375719 13.974 0.288093 13.9248C0.200467 13.8756 0.127718 13.8049 0.0771494 13.7198C0.0265811 13.6347 -2.59689e-05 13.5382 1.90191e-08 13.4399C2.60069e-05 13.3417 0.0266841 13.2452 0.0772974 13.1601C1.17567 11.3173 2.86832 9.99584 4.84366 9.36943C3.86657 8.80493 3.10742 7.94476 2.68282 6.92102C2.25821 5.89728 2.19161 4.76658 2.49325 3.70255C2.79489 2.63852 3.4481 1.70001 4.35255 1.03113C5.257 0.362254 6.36269 0 7.49982 0C8.63695 0 9.74264 0.362254 10.6471 1.03113C11.5515 1.70001 12.2047 2.63852 12.5064 3.70255C12.808 4.76658 12.7414 5.89728 12.3168 6.92102C11.8922 7.94476 11.1331 8.80493 10.156 9.36943C12.1313 9.99584 13.824 11.3173 14.9223 13.1601C14.9731 13.2452 14.9999 13.3417 15 13.44C15.0001 13.5383 14.9736 13.6349 14.9231 13.72Z"
-					fill="#101828"
-					fill-opacity="0.58"
-				/>
-			</svg>
-		),
+		description: "Warm and personable tone",
+		icon: "heart",
 	},
 	{
 		id: "academic",
 		label: "Academic",
-		description: "For scholarly and formal writing",
-		icon: (
-			<svg
-				width="15"
-				height="14"
-				viewBox="0 0 15 14"
-				fill="none"
-				xmlns="http://www.w3.org/2000/svg"
-			>
-				<path
-					d="M14.9231 13.72C14.8724 13.8052 14.7996 13.8759 14.7118 13.925C14.6241 13.9742 14.5246 14 14.4233 14H0.576363C0.475137 13.9999 0.375719 13.974 0.288093 13.9248C0.200467 13.8756 0.127718 13.8049 0.0771494 13.7198C0.0265811 13.6347 -2.59689e-05 13.5382 1.90191e-08 13.4399C2.60069e-05 13.3417 0.0266841 13.2452 0.0772974 13.1601C1.17567 11.3173 2.86832 9.99584 4.84366 9.36943C3.86657 8.80493 3.10742 7.94476 2.68282 6.92102C2.25821 5.89728 2.19161 4.76658 2.49325 3.70255C2.79489 2.63852 3.4481 1.70001 4.35255 1.03113C5.257 0.362254 6.36269 0 7.49982 0C8.63695 0 9.74264 0.362254 10.6471 1.03113C11.5515 1.70001 12.2047 2.63852 12.5064 3.70255C12.808 4.76658 12.7414 5.89728 12.3168 6.92102C11.8922 7.94476 11.1331 8.80493 10.156 9.36943C12.1313 9.99584 13.824 11.3173 14.9223 13.1601C14.9731 13.2452 14.9999 13.3417 15 13.44C15.0001 13.5383 14.9736 13.6349 14.9231 13.72Z"
-					fill="#101828"
-					fill-opacity="0.58"
-				/>
-			</svg>
-		),
+		description: "Scholarly and formal language",
+		icon: "graduation-cap",
+	},
+	{
+		id: "creative",
+		label: "Creative",
+		description: "Expressive and imaginative language",
+		icon: "palette",
+	},
+	{
+		id: "persuasive",
+		label: "Persuasive",
+		description: "Compelling and convincing language",
+		icon: "megaphone",
 	},
 ];
 
 export default function TextInput() {
+	const [tone, setTone] = useState<TextTone | null>(null);
+
 	return (
 		<div className="w-full max-w-4xl mx-auto p-6">
 			<div className="space-y-8">
@@ -91,7 +54,7 @@ export default function TextInput() {
 					<h2 className="text-lg font-medium text-gray-500">Your Text</h2>
 					<textarea
 						placeholder="Enter the text you want to transform..."
-						className="w-full h-[200px] p-2 border border-gray-300 text-gray-500 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+						className="w-full h-[200px] p-2 border border-gray-300 text-gray-500 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 transition-all duration-300"
 					/>
 				</div>
 
@@ -101,24 +64,22 @@ export default function TextInput() {
 						{toneOptions.map((option) => (
 							<button
 								key={option.id}
+								onClick={() => setTone(option.id as TextTone)}
 								type="button"
-								className="relative overflow-hidden rounded-lg border p-4 text-left transition-all duration-300"
+								className={`relative overflow-hidden rounded-lg border p-4 text-left transition-all duration-300 hover:shadow-md ${
+									tone === option.id
+										? "border-[#2463eb] bg-[#eaf0fd] shadow-md"
+										: "border-border/50 hover:border-border hover:bg-accent/50"
+								}`}
 							>
 								<div className="relative z-10">
-									<svg
-										className="h-5 w-5 mb-2"
-										width="15"
-										height="14"
-										viewBox="0 0 15 14"
-										fill="none"
-										xmlns="http://www.w3.org/2000/svg"
-									>
-										<path
-											d="M14.9231 13.72C14.8724 13.8052 14.7996 13.8759 14.7118 13.925C14.6241 13.9742 14.5246 14 14.4233 14H0.576363C0.475137 13.9999 0.375719 13.974 0.288093 13.9248C0.200467 13.8756 0.127718 13.8049 0.0771494 13.7198C0.0265811 13.6347 -2.59689e-05 13.5382 1.90191e-08 13.4399C2.60069e-05 13.3417 0.0266841 13.2452 0.0772974 13.1601C1.17567 11.3173 2.86832 9.99584 4.84366 9.36943C3.86657 8.80493 3.10742 7.94476 2.68282 6.92102C2.25821 5.89728 2.19161 4.76658 2.49325 3.70255C2.79489 2.63852 3.4481 1.70001 4.35255 1.03113C5.257 0.362254 6.36269 0 7.49982 0C8.63695 0 9.74264 0.362254 10.6471 1.03113C11.5515 1.70001 12.2047 2.63852 12.5064 3.70255C12.808 4.76658 12.7414 5.89728 12.3168 6.92102C11.8922 7.94476 11.1331 8.80493 10.156 9.36943C12.1313 9.99584 13.824 11.3173 14.9223 13.1601C14.9731 13.2452 14.9999 13.3417 15 13.44C15.0001 13.5383 14.9736 13.6349 14.9231 13.72Z"
-											fill="#101828"
-											fill-opacity="0.58"
-										/>
-									</svg>
+									<Image
+										src={`/icons/${option.icon}.svg`}
+										alt={option.label}
+										className="mb-2"
+										width={20}
+										height={20}
+									/>
 									<h3 className="font-medium text-black">{option.label}</h3>
 									<p className="text-xs mt-1 text-gray-500">{option.description}</p>
 								</div>
