@@ -47,7 +47,7 @@ const toneOptions = [
 
 export default function TextInput() {
 	const [text, setText] = useState("");
-	const [tone, setTone] = useState<TextTone | null>(null);
+	const [tone, setTone] = useState<TextTone>("professional");
 
 	return (
 		<div className="w-full max-w-4xl mx-auto p-6">
@@ -56,7 +56,7 @@ export default function TextInput() {
 					<h2 className="text-lg font-medium text-black">Your Text</h2>
 					<textarea
 						placeholder="Enter the text you want to transform..."
-						className="w-full h-[200px] p-2 border border-gray-300 text-gray-500 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 transition-all duration-300"
+						className="w-full h-[200px] p-2 border border-gray-300 text-black rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 transition-all duration-300"
 						value={text}
 						onChange={(e) => setText(e.target.value)}
 					/>
@@ -92,7 +92,7 @@ export default function TextInput() {
 					</div>
 				</div>
 
-				<TransformedText text={text} tone={tone} />
+				<TransformedText input={text} tone={tone} />
 			</div>
 		</div>
 	);

@@ -9,6 +9,8 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@ai-sdk/groq": "^1.1.15",
+    "ai": "^4.1.62",
     "next": "15.2.2",
     "react": "^19.0.0",
     "react-dom": "^19.0.0"

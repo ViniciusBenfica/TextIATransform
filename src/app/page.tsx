@@ -1,6 +1,10 @@
+import Header from "@/app/components/header";
+import TextInput from "@/app/components/textInput";
+
 export default function Home() {
 	return (
 		<div className="min-h-screen flex flex-col bg-white">
+			<Header />
 			<main className="mt-20 mb-10">
 				<div className="px-4 max-w-6xl mx-auto">
 					<div className="text-center mb-14 mt-10">
@@ -16,6 +20,10 @@ export default function Home() {
 							Instantly adapt your writing to different tones and styles with our AI-powered text
 							transformation tool.
 						</p>
+					</div>
+
+					<div className=" border border-border/40 rounded-xl shadow-lg overflow-hidden">
+						<TextInput />
 					</div>
 
 					<div className="mt-20 text-center">
