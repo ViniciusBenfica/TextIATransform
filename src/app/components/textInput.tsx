@@ -1,5 +1,6 @@
 "use client";
 
+import { TransformedText } from "@/app/components/transformedText";
 import type { TextTone } from "@/app/types/textTone";
 import Image from "next/image";
 import type React from "react";
@@ -45,16 +46,19 @@ const toneOptions = [
 ];
 
 export default function TextInput() {
+	const [text, setText] = useState("");
 	const [tone, setTone] = useState<TextTone | null>(null);
 
 	return (
 		<div className="w-full max-w-4xl mx-auto p-6">
 			<div className="space-y-8">
 				<div className="space-y-4">
-					<h2 className="text-lg font-medium text-gray-500">Your Text</h2>
+					<h2 className="text-lg font-medium text-black">Your Text</h2>
 					<textarea
 						placeholder="Enter the text you want to transform..."
 						className="w-full h-[200px] p-2 border border-gray-300 text-gray-500 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 transition-all duration-300"
+						value={text}
+						onChange={(e) => setText(e.target.value)}
 					/>
 				</div>
 
@@ -88,14 +92,7 @@ export default function TextInput() {
 					</div>
 				</div>
 
-				<div className="flex justify-center">
-					<button
-						type="button"
-						className="px-8 py-2 h-12 text-white bg-[#91b1f5] rounded-full shadow-md transition-all duration-300 hover:shadow-lg"
-					>
-						Transform Text
-					</button>
-				</div>
+				<TransformedText text={text} tone={tone} />
 			</div>
 		</div>
 	);
