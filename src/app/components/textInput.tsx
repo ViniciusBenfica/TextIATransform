@@ -76,7 +76,7 @@ export default function TextInput() {
 										: "border-border/50 hover:border-border hover:bg-accent/50"
 								}`}
 							>
-								<div className="relative z-10">
+								<div className="relative">
 									<Image
 										src={`/icons/${option.icon}.svg`}
 										alt={option.label}

@@ -1,3 +1,4 @@
+import Footer from "@/app/components/footer";
 import Header from "@/app/components/header";
 import TextInput from "@/app/components/textInput";
 
@@ -58,6 +59,7 @@ export default function Home() {
 					</div>
 				</div>
 			</main>
+			<Footer />
 		</div>
 	);
 }
