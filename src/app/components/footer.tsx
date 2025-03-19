@@ -3,7 +3,7 @@ import React from "react";
 
 export default function Footer() {
 	return (
-		<footer className="flex flex-col justify-center items-center w-full pt-3 text-[#101010] inset-shadow-sm inset-shadow-gray-300">
+		<footer className="flex flex-col justify-center items-center w-full pt-3 text-[#101010] inset-shadow-sm inset-shadow-gray-300 mt-10">
 			<div className="flex items-center gap-4 mb-2">
 				<a
 					target="_blank"
@@ -42,7 +42,7 @@ export default function Footer() {
 				</a>
 			</p>
 			<p className="text-sm sm:text-base text-center">
-				&copy; {new Date().getFullYear()} Cover Letter Generator
+				&copy; {new Date().getFullYear()} Text Transformer IA
 			</p>
 		</footer>
 	);

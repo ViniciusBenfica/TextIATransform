@@ -57,8 +57,9 @@ export const TransformedText = ({ input, tone }: TransformedTextProps) => {
 					type="button"
 					disabled={!input || loading}
 					onClick={transformText}
-					className="px-8 py-2 h-12 text-white bg-[#2563eb] rounded-full shadow-md transition-all duration-300 hover:shadow-lg disabled:opacity-50 disabled:cursor-not-allowed cursor-pointer"
+					className="px-8 flex items-center gap-2 py-2 h-12 text-white bg-[#2563eb] rounded-full shadow-md transition-all duration-300 hover:shadow-lg disabled:opacity-50 disabled:cursor-not-allowed cursor-pointer"
 				>
+					<Image src="/icons/IA.svg" alt="Transform" width={20} height={20} />
 					Transform Text
 				</button>
 			</div>
