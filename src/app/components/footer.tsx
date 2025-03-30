@@ -3,47 +3,30 @@ import React from "react";
 
 export default function Footer() {
 	return (
-		<footer className="flex flex-col justify-center items-center w-full pt-3 text-[#101010] inset-shadow-sm inset-shadow-gray-300 mt-10">
-			<div className="flex items-center gap-4 mb-2">
-				<a
-					target="_blank"
-					href="mailto:vinicius.benfica.ruy@gmail.com"
-					className="text-center"
-					rel="noreferrer"
-				>
-					<Image src="/icons/email.svg" alt="Email" width={20} height={15} />
-				</a>
-				<a
-					target="_blank"
-					href="https://github.com/ViniciusBenfica"
-					className="text-center"
-					rel="noreferrer"
-				>
-					<Image src="/icons/github.svg" alt="Github" width={20} height={20} />
-				</a>
-				<a
-					target="_blank"
-					href="https://www.linkedin.com/in/vinicius-benfica/"
-					className="text-center"
-					rel="noreferrer"
-				>
-					<Image src="/icons/linkedin.svg" alt="Linkedin" width={20} height={20} />
-				</a>
+		<footer className="w-full py-6 px-4 sm:px-6 mt-10 border-t border-border/40">
+			<div className="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between">
+				<p className="text-sm text-gray-500">Created by Vinicius Benfica</p>
+				<div className="flex items-center space-x-4 mt-4 sm:mt-0">
+					<a
+						href="https://github.com/ViniciusBenfica"
+						className="text-gray-500 hover:text-black transition-colors flex items-center gap-1"
+						target="_blank"
+						rel="noopener noreferrer"
+					>
+						<Image src="/icons/github.svg" alt="Github" width={20} height={20} />
+						<span className="text-sm">LinkedIn</span>
+					</a>
+					<a
+						href="https://www.linkedin.com/in/vinicius-benfica/?locale=en_US"
+						className="text-gray-500 hover:text-black transition-colors flex items-center gap-1"
+						target="_blank"
+						rel="noopener noreferrer"
+					>
+						<Image src="/icons/linkedin.svg" alt="Linkedin" width={20} height={20} />
+						<span className="text-sm">GitHub</span>
+					</a>
+				</div>
 			</div>
-			<p className="text-sm sm:text-base text-center">
-				Made by{" "}
-				<a
-					target="_blank"
-					href="https://paulo-mariano.vercel.app"
-					rel="noreferrer"
-					className="bg-gradient-to-r from-[#2500f5] to-[#3f4ac2] text-transparent bg-clip-text"
-				>
-					Vinicius Benfica
-				</a>
-			</p>
-			<p className="text-sm sm:text-base text-center">
-				&copy; {new Date().getFullYear()} Text Transformer IA
-			</p>
 		</footer>
 	);
 }
