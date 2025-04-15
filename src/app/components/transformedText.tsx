@@ -69,7 +69,7 @@ export const TransformedText = ({ input, tone }: TransformedTextProps) => {
 					<button
 						type="button"
 						onClick={handleCopy}
-						className="text-xs h-8 text-black w-24 rounded-md border border-gray-300 hover:bg-[#f1f5f9] flex items-center justify-center gap-2"
+						className="text-xs h-8 text-black w-24 rounded-md border border-gray-300 hover:bg-[#f1f5f9] flex items-center justify-center gap-2 cursor-pointer"
 					>
 						{copied ? (
 							<>
